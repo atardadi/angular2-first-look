@@ -18,13 +18,21 @@ System.register(['angular2/core'], function(exports_1) {
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
-                    this.title = 'Angular Ex';
-                    this.story = { name: 'Geeks' };
+                    this.imagePath = '//www.playalong.io/images/plyIcon.9d8785c6.png';
+                    this.messages = [];
+                    this.title = 'Angular 2 Events';
                 }
+                AppComponent.prototype.log = function (msg, data) {
+                    if (!!data) {
+                        console.log(data);
+                    }
+                    this.messages.splice(0, 0, msg);
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        templateUrl: 'app/app.template.html'
+                        templateUrl: 'app/app.template.html',
+                        styleUrls: ['app/app.component.css']
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
