@@ -1,0 +1,12 @@
+<div>
+	<h3>{{title}}</h3>
+	<div>
+		2 Way
+		<input [(ngModel)]="story.name" />
+	</div>
+	<p>{{story.name}}</p>
+	<div>
+		1 Way
+		<input [value]="story.name" />
+	</div>
+</div>
