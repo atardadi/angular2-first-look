@@ -1,0 +1,9 @@
+<ul>
+	<li *ngFor="#vehicle of vehicles | async"
+		(click)="selectVehicle(vehicle)">{{vehicle.name}}</li>
+</ul>
+
+<my-vehicle 
+	*ngIf="selectedVehicle" 
+	[vehicle]="selectedVehicle">
+</my-vehicle>

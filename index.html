@@ -22,13 +22,19 @@
 	
 
 	<script>
-	  System.import('app/main.js')
+		System.config({
+			packages: {
+        'api': {defaultExtension: 'js'},
+        'app': {defaultExtension: 'js'} 
+      }
+		});
+	  System.import('app/main')
 	        .then(null, console.error.bind(console));
   </script>
 
 
 </head>
 <body>
-	<my-app></my-app>
+	<story-app></story-app>
 </body>
 </html>

@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core', './vehicle.service.js'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,30 +8,32 @@ System.register(['angular2/core'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, vehicle_service_js_1;
     var VehiclesComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (vehicle_service_js_1_1) {
+                vehicle_service_js_1 = vehicle_service_js_1_1;
             }],
         execute: function() {
             VehiclesComponent = (function () {
-                function VehiclesComponent() {
-                    this.vehicles = [
-                        { id: 1, name: 'X-something' },
-                        { id: 2, name: 'Y-something' },
-                        { id: 3, name: 'Z-something' }
-                    ];
+                function VehiclesComponent(_vehicleService) {
+                    this._vehicleService = _vehicleService;
+                    this.vehicles = _vehicleService.getVehicles();
                 }
                 VehiclesComponent = __decorate([
                     core_1.Component({
                         selector: 'my-vehicles',
-                        templateUrl: 'app/vehicles.template.html'
+                        templateUrl: 'app/vehicles.template.html',
+                        providers: [vehicle_service_js_1.VehicleService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [(typeof (_a = typeof vehicle_service_js_1.VehicleService !== 'undefined' && vehicle_service_js_1.VehicleService) === 'function' && _a) || Object])
                 ], VehiclesComponent);
                 return VehiclesComponent;
+                var _a;
             })();
             exports_1("VehiclesComponent", VehiclesComponent);
         }

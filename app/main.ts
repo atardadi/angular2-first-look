@@ -1,7 +1,6 @@
 import {bootstrap} from 'angular2/platform/browser';
-// import {StoryComponent} from './story.component.js';
-// import {VehiclesComponent} from './vehicles.component.js';
-import {AppComponent} from './app.component.js';
+import {AppComponent} from './app.component';
+import 'rxjs/Rx';
 
 bootstrap(AppComponent)
 	.then(success => console.log('Success'))

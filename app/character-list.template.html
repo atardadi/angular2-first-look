@@ -1,0 +1,15 @@
+<ul>
+	<li *ngFor="#character of characters"
+		(click)="selectCharacter(character)">{{character.name}}</li>
+</ul>
+
+<button (click)="clear()">Clear</button>
+<ul class="messages">
+	<li *ngFor="#msg of messages">{{msg}}</li>
+</ul>
+
+<my-character 
+	*ngIf="selectedCharacter" 
+	(onLifecycleHookFire)="log($event)"
+	[character]="selectedCharacter">
+</my-character>

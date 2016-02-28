@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/http', 'angular2/core', 'angular2/router', 'rxjs/Rx', './character-list.component', './character.service', './vehicle.service', './vehicle-list.component', './vehicle.component'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,32 +8,56 @@ System.register(['angular2/core'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var http_1, core_1, router_1, character_list_component_1, character_service_1, vehicle_service_1, vehicle_list_component_1, vehicle_component_1;
     var AppComponent;
     return {
         setters:[
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
+            function (_1) {},
+            function (character_list_component_1_1) {
+                character_list_component_1 = character_list_component_1_1;
+            },
+            function (character_service_1_1) {
+                character_service_1 = character_service_1_1;
+            },
+            function (vehicle_service_1_1) {
+                vehicle_service_1 = vehicle_service_1_1;
+            },
+            function (vehicle_list_component_1_1) {
+                vehicle_list_component_1 = vehicle_list_component_1_1;
+            },
+            function (vehicle_component_1_1) {
+                vehicle_component_1 = vehicle_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
-                    this.imagePath = '//www.playalong.io/images/plyIcon.9d8785c6.png';
-                    this.messages = [];
-                    this.title = 'Angular 2 Events';
                 }
-                AppComponent.prototype.log = function (msg, data) {
-                    if (!!data) {
-                        console.log(data);
-                    }
-                    this.messages.splice(0, 0, msg);
-                };
                 AppComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-app',
+                        selector: 'story-app',
                         templateUrl: 'app/app.template.html',
-                        styleUrls: ['app/app.component.css']
-                    }), 
+                        styles: ["\n    nav ul {list-style-type: none;}\n    nav ul li {padding: 4px;cursor: pointer;display:inline-block}\n  "],
+                        providers: [
+                            character_service_1.CharacterService,
+                            http_1.HTTP_PROVIDERS,
+                            router_1.ROUTER_PROVIDERS,
+                            vehicle_service_1.VehicleService
+                        ]
+                    }),
+                    router_1.RouteConfig([
+                        { path: '/character', name: 'Characters', component: character_list_component_1.CharacterListComponent, useAsDefault: true },
+                        { path: '/vehicles', name: 'Vehicles', component: vehicle_list_component_1.VehicleListComponent },
+                        { path: '/vehicle/:id', name: 'Vehicle', component: vehicle_component_1.VehicleComponent }
+                    ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;
