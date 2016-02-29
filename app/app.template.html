@@ -2,9 +2,16 @@
   <header>
     <h1>Storyline Tracker</h1>
     <h3>Demo: Needs the Router</h3>
+    <nav>
+    	<ul>
+    		<li><a href="" [routerLink]="['Characters']">Characters</a></li>
+    		<li><a href="" [routerLink]="['Vehicles']">Vehicles</a></li>
+    	</ul>
+    </nav>
   </header>
   <main>
     <section>
+    	<router-outlet></router-outlet>
     </section>
   </main>
 </div>

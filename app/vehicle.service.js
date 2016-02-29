@@ -37,8 +37,12 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                 VehicleService.prototype.getVehicles = function () {
                     return this._http.get('api/vehicles.json')
                         .map(function (response) { return response.json().data; })
-                        .toPromise()
                         .catch(this.handleError);
+                };
+                VehicleService.prototype.getVehicle = function (id) {
+                    if (id === void 0) { id = -1; }
+                    return this.getVehicles()
+                        .map((function (vehicles) { return vehicles.find(function (vehicle) { return vehicle.id === id; }); }));
                 };
                 VehicleService.prototype.handleError = function (error) {
                     return Rx_1.Observable.throw(error.json().error || 'Error');

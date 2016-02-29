@@ -1,5 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
-import {Character, CharaterService} from './character.service';
+import {Character, CharacterService} from './character.service';
 import {CharacterComponent} from './character.component';
 
 
@@ -7,14 +7,14 @@ import {CharacterComponent} from './character.component';
 	selector: 'my-character-list',
 	templateUrl: 'app/character-list.template.html',
 	directives: [CharacterComponent],
-	providers: [CharaterService]
+	providers: [CharacterService]
 })
 export class CharacterListComponent implements OnInit{
 	private selectedCharacter: Character;
 	private characters: Character[] = [];
 	private messages: string[] = [];
 
-	constructor(private _characterService: CharaterService){}
+	constructor(private _characterService: CharacterService) { }
 
 	ngOnInit() {
 		this.characters = this._characterService.getCharaters();

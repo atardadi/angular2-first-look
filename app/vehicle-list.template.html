@@ -1,9 +1,9 @@
 <ul>
 	<li *ngFor="#vehicle of vehicles | async"
-		(click)="selectVehicle(vehicle)">{{vehicle.name}}</li>
+		(click)="selectVehicle(vehicle)">
+		<a href="" [routerLink]="['Vehicle',{id:vehicle.id}]">
+			{{vehicle.name}}
+		</a>
+	</li>
 </ul>
 
-<my-vehicle 
-	*ngIf="selectedVehicle" 
-	[vehicle]="selectedVehicle">
-</my-vehicle>

@@ -46,12 +46,11 @@ System.register(['angular2/core', './character.service', './character.component'
                         selector: 'my-character-list',
                         templateUrl: 'app/character-list.template.html',
                         directives: [character_component_1.CharacterComponent],
-                        providers: [character_service_1.CharaterService]
+                        providers: [character_service_1.CharacterService]
                     }), 
-                    __metadata('design:paramtypes', [(typeof (_a = typeof character_service_1.CharaterService !== 'undefined' && character_service_1.CharaterService) === 'function' && _a) || Object])
+                    __metadata('design:paramtypes', [character_service_1.CharacterService])
                 ], CharacterListComponent);
                 return CharacterListComponent;
-                var _a;
             })();
             exports_1("CharacterListComponent", CharacterListComponent);
         }

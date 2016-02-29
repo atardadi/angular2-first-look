@@ -13,8 +13,12 @@ export class VehicleService{
 	public getVehicles() {
 		return this._http.get('api/vehicles.json')
 			.map((response: Response) => <Vehicle[]>response.json().data)
-			.toPromise()	
 			.catch(this.handleError);
+	}
+
+	public getVehicle(id: number = -1) {
+		return this.getVehicles()
+			.map((vehicles => vehicles.find(vehicle => vehicle.id === id)));
 	}
 
 	handleError(error: Response) {

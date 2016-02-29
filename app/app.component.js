@@ -46,6 +46,7 @@ System.register(['angular2/http', 'angular2/core', 'angular2/router', 'rxjs/Rx',
                         selector: 'story-app',
                         templateUrl: 'app/app.template.html',
                         styles: ["\n    nav ul {list-style-type: none;}\n    nav ul li {padding: 4px;cursor: pointer;display:inline-block}\n  "],
+                        directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [
                             character_service_1.CharacterService,
                             http_1.HTTP_PROVIDERS,
@@ -54,7 +55,7 @@ System.register(['angular2/http', 'angular2/core', 'angular2/router', 'rxjs/Rx',
                         ]
                     }),
                     router_1.RouteConfig([
-                        { path: '/character', name: 'Characters', component: character_list_component_1.CharacterListComponent, useAsDefault: true },
+                        { path: '/characters', name: 'Characters', component: character_list_component_1.CharacterListComponent },
                         { path: '/vehicles', name: 'Vehicles', component: vehicle_list_component_1.VehicleListComponent },
                         { path: '/vehicle/:id', name: 'Vehicle', component: vehicle_component_1.VehicleComponent }
                     ]), 
