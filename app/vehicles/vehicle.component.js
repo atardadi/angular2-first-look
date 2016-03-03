@@ -42,7 +42,7 @@ System.register(['angular2/core', './vehicle.service', 'angular2/router'], funct
                 VehicleComponent = __decorate([
                     core_1.Component({
                         selector: 'my-vehicle',
-                        templateUrl: 'app/vehicle.template.html',
+                        templateUrl: 'app/vehicles/vehicle.template.html',
                         providers: [vehicle_service_1.VehicleService]
                     }), 
                     __metadata('design:paramtypes', [router_1.RouteParams, vehicle_service_1.VehicleService])

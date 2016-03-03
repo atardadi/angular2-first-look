@@ -1,5 +1,5 @@
 <ul>
-	<li *ngFor="#vehicle of vehicles | async"
+	<li *ngFor="#vehicle of vehicles"
 		(click)="selectVehicle(vehicle)">
 		<a href="" [routerLink]="['Vehicle',{id:vehicle.id}]">
 			{{vehicle.name}}

@@ -1,4 +1,4 @@
-System.register(['angular2/http', 'angular2/core', 'angular2/router', 'rxjs/Rx', './character-list.component', './character.service', './vehicle.service', './vehicle-list.component', './vehicle.component'], function(exports_1) {
+System.register(['angular2/core', 'angular2/http', 'angular2/router', 'rxjs/Rx', './characters/characters.component', './characters/character.service', './vehicles/vehicles.component'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,34 +8,28 @@ System.register(['angular2/http', 'angular2/core', 'angular2/router', 'rxjs/Rx',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var http_1, core_1, router_1, character_list_component_1, character_service_1, vehicle_service_1, vehicle_list_component_1, vehicle_component_1;
+    var core_1, http_1, router_1, characters_component_1, character_service_1, vehicles_component_1;
     var AppComponent;
     return {
         setters:[
-            function (http_1_1) {
-                http_1 = http_1_1;
-            },
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
             },
             function (router_1_1) {
                 router_1 = router_1_1;
             },
             function (_1) {},
-            function (character_list_component_1_1) {
-                character_list_component_1 = character_list_component_1_1;
+            function (characters_component_1_1) {
+                characters_component_1 = characters_component_1_1;
             },
             function (character_service_1_1) {
                 character_service_1 = character_service_1_1;
             },
-            function (vehicle_service_1_1) {
-                vehicle_service_1 = vehicle_service_1_1;
-            },
-            function (vehicle_list_component_1_1) {
-                vehicle_list_component_1 = vehicle_list_component_1_1;
-            },
-            function (vehicle_component_1_1) {
-                vehicle_component_1 = vehicle_component_1_1;
+            function (vehicles_component_1_1) {
+                vehicles_component_1 = vehicles_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -48,16 +42,14 @@ System.register(['angular2/http', 'angular2/core', 'angular2/router', 'rxjs/Rx',
                         styles: ["\n    nav ul {list-style-type: none;}\n    nav ul li {padding: 4px;cursor: pointer;display:inline-block}\n  "],
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [
-                            character_service_1.CharacterService,
                             http_1.HTTP_PROVIDERS,
                             router_1.ROUTER_PROVIDERS,
-                            vehicle_service_1.VehicleService
+                            character_service_1.CharacterService
                         ]
                     }),
                     router_1.RouteConfig([
-                        { path: '/characters', name: 'Characters', component: character_list_component_1.CharacterListComponent },
-                        { path: '/vehicles', name: 'Vehicles', component: vehicle_list_component_1.VehicleListComponent },
-                        { path: '/vehicle/:id', name: 'Vehicle', component: vehicle_component_1.VehicleComponent }
+                        { path: '/characters/...', name: 'Characters', component: characters_component_1.CharactersComponent, useAsDefault: true },
+                        { path: '/vehicles/...', name: 'Vehicles', component: vehicles_component_1.VehiclesComponent }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core', 'angular2/http', '../config'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,42 +8,36 @@ System.register(['angular2/core'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
-    var Character, CharacterService;
+    var core_1, http_1, config_1;
+    var charactersUrl, CharacterService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
+            function (config_1_1) {
+                config_1 = config_1_1;
             }],
         execute: function() {
-            Character = (function () {
-                function Character(id, name, side) {
-                    if (side === void 0) { side = 'light'; }
-                    this.id = id;
-                    this.name = name;
-                    this.side = side;
-                }
-                Character = __decorate([
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [Number, String, String])
-                ], Character);
-                return Character;
-            })();
-            exports_1("Character", Character);
+            charactersUrl = config_1.CONFIG.baseUrls.characters;
             CharacterService = (function () {
-                function CharacterService() {
+                function CharacterService(_http) {
+                    this._http = _http;
                 }
-                CharacterService.prototype.getCharaters = function () {
-                    return [
-                        new Character(1, 'Dadi'),
-                        new Character(2, 'Dadi2'),
-                        new Character(3, 'Dadi3'),
-                        new Character(4, 'Dadi4')
-                    ];
+                CharacterService.prototype.getCharacters = function () {
+                    return this._http.get(charactersUrl)
+                        .map(function (response) { return response.json().data; });
+                };
+                CharacterService.prototype.getCharacter = function (id) {
+                    return this.getCharacters()
+                        .map(function (characters) { return characters.find(function (character) { return character.id == id; }); });
                 };
                 CharacterService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [http_1.Http])
                 ], CharacterService);
                 return CharacterService;
             })();

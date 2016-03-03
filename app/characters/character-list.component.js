@@ -1,4 +1,4 @@
-System.register(['angular2/core', './character.service', './character.component'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', './character.service'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,45 +8,33 @@ System.register(['angular2/core', './character.service', './character.component'
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, character_service_1, character_component_1;
+    var core_1, router_1, character_service_1;
     var CharacterListComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
             function (character_service_1_1) {
                 character_service_1 = character_service_1_1;
-            },
-            function (character_component_1_1) {
-                character_component_1 = character_component_1_1;
             }],
         execute: function() {
             CharacterListComponent = (function () {
                 function CharacterListComponent(_characterService) {
                     this._characterService = _characterService;
-                    this.characters = [];
-                    this.messages = [];
                 }
                 CharacterListComponent.prototype.ngOnInit = function () {
-                    this.characters = this._characterService.getCharaters();
-                };
-                CharacterListComponent.prototype.clear = function () {
-                    this.selectedCharacter = null;
-                };
-                CharacterListComponent.prototype.log = function (msg) {
-                    this.messages.splice(0, 0, msg);
-                    console.log(msg);
-                };
-                CharacterListComponent.prototype.selectCharacter = function (toSelect) {
-                    this.selectedCharacter = toSelect;
+                    this.characters = this._characterService.getCharacters();
                 };
                 CharacterListComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-character-list',
-                        templateUrl: 'app/character-list.template.html',
-                        directives: [character_component_1.CharacterComponent],
-                        providers: [character_service_1.CharacterService]
+                        selector: 'story-characters',
+                        templateUrl: './app/characters/character-list.template.html',
+                        styles: ["\n    .characters {list-style-type: none;}\n    *.characters li {padding: 4px;cursor: pointer;}\n  "],
+                        directives: [router_1.ROUTER_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [character_service_1.CharacterService])
                 ], CharacterListComponent);

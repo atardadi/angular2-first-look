@@ -25,16 +25,16 @@ System.register(['angular2/core', './vehicle.service', 'angular2/router'], funct
             VehicleListComponent = (function () {
                 function VehicleListComponent(_VehicleService) {
                     this._VehicleService = _VehicleService;
-                    this.vehicles = [];
                     this.messages = [];
                 }
                 VehicleListComponent.prototype.ngOnInit = function () {
+                    this.vehicles = [];
                     this.getVehicles();
                 };
                 VehicleListComponent.prototype.getVehicles = function () {
                     var _this = this;
                     this._VehicleService.getVehicles()
-                        .subscribe(function (vehicles) { return _this.vehicles = vehicles; });
+                        .subscribe(function (vehicles) { _this.vehicles = vehicles; });
                 };
                 VehicleListComponent.prototype.clear = function () {
                     this.selectedVehicle = null;
@@ -49,7 +49,7 @@ System.register(['angular2/core', './vehicle.service', 'angular2/router'], funct
                 VehicleListComponent = __decorate([
                     core_1.Component({
                         selector: 'my-vehicle-list',
-                        templateUrl: 'app/vehicle-list.template.html',
+                        templateUrl: 'app/vehicles/vehicle-list.template.html',
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [vehicle_service_1.VehicleService]
                     }), 

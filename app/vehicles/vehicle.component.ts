@@ -4,11 +4,11 @@ import {RouteParams} from 'angular2/router';
 
 @Component({
 	selector: 'my-vehicle',
-	templateUrl: 'app/vehicle.template.html',
+	templateUrl: 'app/vehicles/vehicle.template.html',
 	providers: [VehicleService]
 })
 export class VehicleComponent implements OnInit{
-	@Input() private vehicle: Vehicle;
+	@Input() vehicle: Vehicle;
 
 	constructor(
 		private _routeParams: RouteParams,
@@ -21,5 +21,4 @@ export class VehicleComponent implements OnInit{
 				.subscribe((vehicle: Vehicle) => this.vehicle = vehicle)
 		}
 	}
-
 }

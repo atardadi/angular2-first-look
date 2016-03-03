@@ -5,24 +5,25 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
 	selector: 'my-vehicle-list',
-	templateUrl: 'app/vehicle-list.template.html',
+	templateUrl: 'app/vehicles/vehicle-list.template.html',
 	directives: [ROUTER_DIRECTIVES],
 	providers: [VehicleService]
 })
 export class VehicleListComponent implements OnInit{
 	private selectedVehicle: Vehicle;
-	private vehicles: Vehicle[] = [];
+	private vehicles: Vehicle[];
 	private messages: string[] = [];
 
 	constructor(private _VehicleService: VehicleService){}
 
 	ngOnInit() {
+		this.vehicles = [];
 		this.getVehicles(); 
 	}
 
 	getVehicles() {
 		this._VehicleService.getVehicles()
-				.subscribe(vehicles => this.vehicles = vehicles);
+			.subscribe(vehicles => { this.vehicles = vehicles;});
 	}
 
 	clear() {
